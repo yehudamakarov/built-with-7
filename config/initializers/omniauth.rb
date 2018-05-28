@@ -1,4 +1,4 @@
 Rails.application.config.middleware.use OmniAuth::Builder do
-  provider :google_oauth2, ENV['GOOGLE-KEY'] ENV['GOOGLE-SECRET']
-  provider :github, ENV['GITHUB-KEY'], ENV['GITHUB-SECRET'] 
+  provider :google_oauth2, ENV['GOOGLE_KEY'], ENV['GOOGLE_SECRET']
+  provider :github, ENV['GITHUB_KEY'], ENV['GITHUB_SECRET']
 end
