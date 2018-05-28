@@ -45,6 +45,7 @@ group :development, :test do
   gem 'awesome_print'
 
   # login_stuff
+  gem 'bcrypt'
   gem 'omniauth-google-oauth2'
   gem 'omniauth-github'
   gem 'dotenv-rails'

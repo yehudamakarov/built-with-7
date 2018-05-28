@@ -1,7 +1,9 @@
 <h1>Signup</h1>
 
 <%= form_for @user do |f| %>
-  Full Name: <%= f.text_field :name %>
+  First Name: <%= f.text_field :first_name %>
+  <br>
+  Last Name: <%= f.text_field :last_name %>
   <br>
   Email Address: <%= f.email_field :email %>
   <br>
@@ -11,3 +13,10 @@
   <br>
   <%= f.submit 'Sign Up!' %>
 <% end %>
+
+<h3>Or,</h3>
+
+<%= link_to 'Sign up with Google', '/auth/google_oauth2' %>
+<br>
+<%= link_to 'Sign up with Github', '/auth/github' %>
+<br>

@@ -5,19 +5,22 @@ class SessionsController < ApplicationController
   end
 
   def create
-    if login_params
-      @user = User.find_by(email: login_params[:email])
-      if @user.authenticate(login_params[:password])
-        self.current_user = @user
-      else
-        redirect_to login_path, notice: 'Please try to login with a service or double check your password.'
-      end
-    else
+    if auth_hash
       @identity = get_or_create_identity(auth_hash)
       self.current_user = @identity.user
+      return redirect_to user_path(self.current_user)
+    else
+      if login_params
+        @user = User.find_by(email: login_params[:email])
+        if @user.authenticate(login_params[:password])
+          return self.current_user = @user
+        else
+          return redirect_to login_path, notice: 'Please try to log in with a service or double check your password.'
+        end
+      else
+        return redirect_to login_path, notice: 'Please make sure to enter both your email and password.'
+      end
     end
-
-    redirect_to user_path(self.current_user)
   end
 
   def destroy
@@ -36,7 +39,12 @@ class SessionsController < ApplicationController
   private
 
   def login_params
-    params.permit(:email, :password)
+    if params[:email].blank? || params[:password].blank?
+      return nil
+    else
+      params.permit(:email, :password)
+    end
+
   end
 
 end

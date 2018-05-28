@@ -1,32 +1,42 @@
 class User < ApplicationRecord
   has_many :identities
+
   has_secure_password
+
   validates :password, confirmation: true
-  validates :email_confirmation, presence: true
+  validates :password_confirmation, presence: true, unless: :skip_password_confirmation_validation
+
   validates_uniqueness_of :email, {case_sensitive: false}
 
+  attr_accessor :skip_password_confirmation_validation
+
   def self.find_or_create_by_auth(auth_hash)
-    self.where(email: auth_hash[:info][:email]).first_or_create do |u|
+    @user = self.where(email: auth_hash[:info][:email]).first_or_initialize.tap do |u|
       u.first_name = first_name_from_full_name(auth_hash[:info][:name])
       u.last_name = last_name_from_full_name(auth_hash[:info][:name])
       u.email = auth_hash[:info][:email]
+      #
+      #
+      #
+      u.skip_password_confirmation_validation = true
+      # stuck. has_secure_password requires a password, but making a user with an auth_hash shouldn't need a password.
+      binding.pry
+      #
+      #
+      #
+      u.save
     end
   end
 
   def self.create_from_signup(signup_params)
-    @user = User.create do |u|
-      u.first_name = first_name_from_full_name(signup_params[:name])
-      u.last_name = last_name_from_full_name(signup_params[:name])
-      u.email = signup_params[:email]
-      u.password = signup_params[:password]
-    end
+    @user = User.create(signup_params)
   end
 
-  def first_name_from_full_name(full_name)
-    fullname.split(' ')[0..-2]
+  def self.first_name_from_full_name(full_name)
+    full_name.split(' ')[0..-2].join(' ')
   end
 
-  def last_name_from_full_name(full_name)
+  def self.last_name_from_full_name(full_name)
     full_name.split(' ')[-1]
   end
 

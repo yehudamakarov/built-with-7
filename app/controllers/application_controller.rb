@@ -18,7 +18,6 @@ class ApplicationController < ActionController::Base
 
   def current_user=(user)
     session[:user_id] = user.id
-    session[:provider] = auth_hash[:provider]
     @current_user = user
   end
 # Why do we makes methods private? Should these be?
@@ -26,7 +25,7 @@ class ApplicationController < ActionController::Base
     if logged_in?
       return
     else
-      redirect_to '/'
+      redirect_to '/', notice: 'Please Log In.'
     end
   end
 
