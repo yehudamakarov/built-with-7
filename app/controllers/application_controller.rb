@@ -4,15 +4,17 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find_by(id: session[:user_id])
   end
 
-  def session_provider
-    @session_provider ||= session[:provider]
-  end
-
   def logged_in?
     !!current_user
   end
 
-  helper_method :current_user, :logged_in?, :session_provider
+  def redirect_because_logged_in
+    if logged_in?
+      redirect_to user_path(current_user), notice: 'Already logged in.'
+    end
+  end
+
+  helper_method :current_user, :logged_in?
 
   def current_user=(user)
     session[:user_id] = user.id

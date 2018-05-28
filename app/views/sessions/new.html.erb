@@ -1,0 +1,11 @@
+<h1>Login</h1>
+
+<%= link_to 'Login with Google', '/auth/google_oauth2' %>
+<br>
+<%= link_to 'Login with Github', '/auth/github' %>
+<br>
+<%= form_tag '/login', method: :post do %>
+  Email Address: <%= text_field_tag :email %>
+  Password: <%= password_field_tag :password %>
+<% end %>
+<%= link_to 'Logout', '/logout' %>
