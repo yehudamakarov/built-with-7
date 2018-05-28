@@ -8,5 +8,7 @@ Rails.application.routes.draw do
   # home stuff
   root 'application#welcome'
 
+  resources :users
+
 
 end
