@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   # home stuff
   root 'application#welcome'
 
+  get 'signup' => 'users#new'
+  get 'login' => 'sessions#new'
+
   resources :users
 
 
