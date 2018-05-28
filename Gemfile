@@ -42,6 +42,7 @@ group :development, :test do
 
   # debugging stuff
   gem 'pry'
+  gem 'awesome_print'
 
   # login_stuff
   gem 'omniauth-google-oauth2'
