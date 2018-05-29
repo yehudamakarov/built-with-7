@@ -10,10 +10,12 @@
   </head>
 
   <body>
-    <% if @message %>
-      <h2><%= @message %></h2>
-    <% end %>
-    
-    <%= yield %>
+    <div class="container">
+      <% if @message %>
+        <h2><%= @message %></h2>
+      <% end %>
+
+      <%= yield %>
+    </div>
   </body>
 </html>
