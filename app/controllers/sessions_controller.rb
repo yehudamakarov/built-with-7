@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
 
   def new
-
+    @message = params[:message]
   end
 
   def create
@@ -12,13 +12,15 @@ class SessionsController < ApplicationController
     else
       if login_params
         @user = User.find_by(email: login_params[:email])
-        if @user.authenticate(login_params[:password])
-          return self.current_user = @user
+        if @user.try(:password_digest)
+          if @user.authenticate(login_params[:password])
+            return self.current_user = @user
+          end
         else
-          return redirect_to login_path, notice: 'Please try to log in with a service or double check your password.'
+          return redirect_to login_path(message: 'Please try to log in with a service or double check your password.')
         end
       else
-        return redirect_to login_path, notice: 'Please make sure to enter both your email and password.'
+        return redirect_to login_path(message: 'Please make sure to enter both your email and password.')
       end
     end
   end

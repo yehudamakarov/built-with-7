@@ -10,7 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_28_162134) do
+ActiveRecord::Schema.define(version: 2018_05_28_234146) do
+
+  create_table "accomplishments", force: :cascade do |t|
+    t.string "title"
+    t.string "description"
+    t.datetime "time"
+    t.integer "user_id"
+    t.integer "day_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "days", force: :cascade do |t|
+    t.string "name"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "identities", force: :cascade do |t|
     t.string "uid"

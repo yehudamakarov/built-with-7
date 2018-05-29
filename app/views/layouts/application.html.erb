@@ -10,6 +10,10 @@
   </head>
 
   <body>
+    <% if @message %>
+      <h2><%= @message %></h2>
+    <% end %>
+    
     <%= yield %>
   </body>
 </html>

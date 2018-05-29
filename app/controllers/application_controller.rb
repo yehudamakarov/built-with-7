@@ -1,5 +1,9 @@
 class ApplicationController < ActionController::Base
 
+  def welcome
+    @message = params[:message]
+  end
+
   def current_user
     @current_user ||= User.find_by(id: session[:user_id])
   end
@@ -10,7 +14,7 @@ class ApplicationController < ActionController::Base
 
   def redirect_because_logged_in
     if logged_in?
-      redirect_to user_path(current_user), notice: 'Already logged in.'
+      redirect_to user_path(current_user, message: 'Already logged in.')
     end
   end
 
@@ -25,7 +29,7 @@ class ApplicationController < ActionController::Base
     if logged_in?
       return
     else
-      redirect_to '/', notice: 'Please Log In.'
+      redirect_to root_path(message: 'Please Log In.')
     end
   end
 
