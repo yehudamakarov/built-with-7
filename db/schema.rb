@@ -13,6 +13,7 @@
 ActiveRecord::Schema.define(version: 2018_06_01_193441) do
 
   create_table "accomplishments", force: :cascade do |t|
+    t.integer "user_id"
     t.string "title"
     t.string "effect"
     t.datetime "date_time"

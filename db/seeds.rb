@@ -25,13 +25,15 @@ the_one.days.create(name: 'Saturday')
 the_one.monday.accomplishments.create(
   title: 'Hugged Esther',
   effect: 'Loved my wife.',
-  date_time: DateTime.now.days_ago(1)
+  date_time: DateTime.now.days_ago(1),
+  user: the_one
 )
 
 accomplishment_1 = Accomplishment.create(
   title: 'Did Chitas',
   effect: 'Had a good connected energy for the rest of the night.',
-  date_time: DateTime.now
+  date_time: DateTime.now,
+  user: the_one
 )
 
 accomplishment_1.days.push(the_one.monday, the_one.wednesday)
