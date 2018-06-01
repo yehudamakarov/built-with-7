@@ -12,7 +12,7 @@ class User < ApplicationRecord
   attr_accessor :skip_password_validation
 
   has_many :days
-  has_many :day_accomplishments, through: :day
+  has_many :day_accomplishments, through: :days
   has_many :accomplishments, through: :day_accomplishments
 
 
