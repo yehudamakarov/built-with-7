@@ -43,6 +43,7 @@ group :development, :test do
   # debugging stuff
   gem 'pry'
   gem 'awesome_print'
+  gem 'hirb'
 
   # login_stuff
   gem 'bcrypt'

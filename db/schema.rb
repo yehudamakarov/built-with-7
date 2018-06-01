@@ -10,14 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_28_234146) do
+ActiveRecord::Schema.define(version: 2018_06_01_032456) do
 
   create_table "accomplishments", force: :cascade do |t|
     t.string "title"
-    t.string "description"
-    t.datetime "time"
-    t.integer "user_id"
+    t.string "effect"
+    t.datetime "date_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "day_accomplishments", force: :cascade do |t|
     t.integer "day_id"
+    t.integer "accomplishment_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

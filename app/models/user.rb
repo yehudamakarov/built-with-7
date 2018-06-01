@@ -11,6 +11,10 @@ class User < ApplicationRecord
 
   attr_accessor :skip_password_validation
 
+  has_many :days
+  has_many :day_accomplishments, through: :day
+  has_many :accomplishments, through: :day_accomplishments
+
 
 
   def self.find_or_create_by_auth(auth_hash)
@@ -19,12 +23,27 @@ class User < ApplicationRecord
       u.last_name = last_name_from_full_name(auth_hash[:info][:name])
       u.email = auth_hash[:info][:email]
       u.skip_password_validation = true
+      u.days.build(name: 'sunday')
+      u.days.build(name: 'monday')
+      u.days.build(name: 'tuesday')
+      u.days.build(name: 'wednesday')
+      u.days.build(name: 'thursday')
+      u.days.build(name: 'friday')
+      u.days.build(name: 'saturday')
       u.save
     end
   end
 
   def self.create_from_signup(signup_params)
     @user = User.create(signup_params)
+    @user.days.create(name: 'sunday')
+    @user.days.create(name: 'monday')
+    @user.days.create(name: 'tuesday')
+    @user.days.create(name: 'wednesday')
+    @user.days.create(name: 'thursday')
+    @user.days.create(name: 'friday')
+    @user.days.create(name: 'saturday')
+    @user
   end
 
   def self.first_name_from_full_name(full_name)
@@ -33,6 +52,34 @@ class User < ApplicationRecord
 
   def self.last_name_from_full_name(full_name)
     full_name.split(' ')[-1]
+  end
+
+  def sunday
+    self.days.find_by(name: 'sunday')
+  end
+
+  def monday
+    self.days.find_by(name: 'monday')
+  end
+
+  def tuesday
+    self.days.find_by(name: 'tuesday')
+  end
+
+  def wednesday
+    self.days.find_by(name: 'wednesday')
+  end
+
+  def thursday
+    self.days.find_by(name: 'thursday')
+  end
+
+  def friday
+    self.days.find_by(name: 'friday')
+  end
+
+  def saturday
+    self.days.find_by(name: 'saturday')
   end
 
 end

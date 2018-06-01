@@ -2,10 +2,8 @@ class CreateAccomplishments < ActiveRecord::Migration[5.2]
   def change
     create_table :accomplishments do |t|
       t.string :title
-      t.string :description
-      t.datetime :time
-      t.integer :user_id
-      t.integer :day_id
+      t.string :effect
+      t.datetime :date_time
 
       t.timestamps
     end
