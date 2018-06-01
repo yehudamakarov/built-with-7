@@ -14,15 +14,13 @@ the_one = User.create(
   skip_password_validation: true
 )
 
-
-
-the_one.days.create(name: 'sunday')
-the_one.days.create(name: 'monday')
-the_one.days.create(name: 'tuesday')
-the_one.days.create(name: 'wednesday')
-the_one.days.create(name: 'thursday')
-the_one.days.create(name: 'friday')
-the_one.days.create(name: 'saturday')
+the_one.days.create(name: 'Sunday')
+the_one.days.create(name: 'Monday')
+the_one.days.create(name: 'Tuesday')
+the_one.days.create(name: 'Wednesday')
+the_one.days.create(name: 'Thursday')
+the_one.days.create(name: 'Friday')
+the_one.days.create(name: 'Saturday')
 
 the_one.monday.accomplishments.create(
   title: 'Hugged Esther',

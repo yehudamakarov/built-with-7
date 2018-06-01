@@ -5,14 +5,17 @@ Rails.application.routes.draw do
   match '/auth/:provider/callback' => 'sessions#create', via: [:get, :post]
   match '/logout' => 'sessions#destroy', via: [:get, :post]
 
-  resources :users
+  get 'signup' => 'users#new'
+  get 'login' => 'sessions#new'
+  post 'login' => 'sessions#create'
 
   # home stuff
   root 'application#welcome'
 
-  get 'signup' => 'users#new'
-  get 'login' => 'sessions#new'
-  post 'login' => 'sessions#create'
+  # model stuff
+  resources :users
+  resources :accomplishments
+
 
 
 end

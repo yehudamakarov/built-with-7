@@ -1,0 +1,11 @@
+<%= form_for @accomplishment do |f| %>
+  Title: <%= f.text_field :title %>
+  <br>
+  Effect: <%= f.text_area :effect %>
+  <br>
+  When? <%= f.collection_select :day, @user.days, :id, :name %>
+  <br>
+  Time: <%= f.datetime_select :date_time %>
+
+
+<% end %>

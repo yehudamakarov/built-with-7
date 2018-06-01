@@ -23,26 +23,26 @@ class User < ApplicationRecord
       u.last_name = last_name_from_full_name(auth_hash[:info][:name])
       u.email = auth_hash[:info][:email]
       u.skip_password_validation = true
-      u.days.build(name: 'sunday')
-      u.days.build(name: 'monday')
-      u.days.build(name: 'tuesday')
-      u.days.build(name: 'wednesday')
-      u.days.build(name: 'thursday')
-      u.days.build(name: 'friday')
-      u.days.build(name: 'saturday')
+      u.days.build(name: 'Sunday')
+      u.days.build(name: 'Monday')
+      u.days.build(name: 'Tuesday')
+      u.days.build(name: 'Wednesday')
+      u.days.build(name: 'Thursday')
+      u.days.build(name: 'Friday')
+      u.days.build(name: 'Saturday')
       u.save
     end
   end
 
   def self.create_from_signup(signup_params)
     @user = User.create(signup_params)
-    @user.days.create(name: 'sunday')
-    @user.days.create(name: 'monday')
-    @user.days.create(name: 'tuesday')
-    @user.days.create(name: 'wednesday')
-    @user.days.create(name: 'thursday')
-    @user.days.create(name: 'friday')
-    @user.days.create(name: 'saturday')
+    @user.days.create(name: 'Sunday')
+    @user.days.create(name: 'Monday')
+    @user.days.create(name: 'Tuesday')
+    @user.days.create(name: 'Wednesday')
+    @user.days.create(name: 'Thursday')
+    @user.days.create(name: 'Friday')
+    @user.days.create(name: 'Saturday')
     @user
   end
 
@@ -55,31 +55,31 @@ class User < ApplicationRecord
   end
 
   def sunday
-    self.days.find_by(name: 'sunday')
+    self.days.find_by(name: 'Sunday')
   end
 
   def monday
-    self.days.find_by(name: 'monday')
+    self.days.find_by(name: 'Monday')
   end
 
   def tuesday
-    self.days.find_by(name: 'tuesday')
+    self.days.find_by(name: 'Tuesday')
   end
 
   def wednesday
-    self.days.find_by(name: 'wednesday')
+    self.days.find_by(name: 'Wednesday')
   end
 
   def thursday
-    self.days.find_by(name: 'thursday')
+    self.days.find_by(name: 'Thursday')
   end
 
   def friday
-    self.days.find_by(name: 'friday')
+    self.days.find_by(name: 'Friday')
   end
 
   def saturday
-    self.days.find_by(name: 'saturday')
+    self.days.find_by(name: 'Saturday')
   end
 
 end
