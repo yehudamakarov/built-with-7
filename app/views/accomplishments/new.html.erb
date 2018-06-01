@@ -6,7 +6,8 @@
   <!-- When? <%= f.collection_select :day, @user.days, :id, :name %>
   <br> -->
   Time: <%= f.datetime_select :date_time, { discard_year: true, discard_month: true, minute_step: 15 }  %>
-  Do This On: <%= f.collection_select :day_ids, @accomplishment.user.days, :id, :name %>
+  <br>
+  Do This On: <%= f.collection_check_boxes :day_ids, @user.days, :id, :name %>
   <br>
   <%= f.submit "Accomplished!" %>
 
