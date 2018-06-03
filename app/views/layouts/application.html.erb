@@ -5,18 +5,51 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js" type="text/javascript"></script>
+    <script type="text/javascript">WebFont.load({  google: {    families: ["Bitter:400,700,400italic"]  }});</script>
+
   </head>
 
   <body>
+    <div data-collapse="none" data-animation="default" data-duration="400" class="navbar w-nav">
+      <div class="container w-container">
+        <a href="#" class="brand w-nav-brand">
+          <div class="text-block">Built With 7</div>
+        </a>
+        <nav role="navigation" class="nav-menu-2 w-nav-menu">
+          <a href="#" class="nav-link w-nav-link">Sign Up</a>
+          <a href="#" class="nav-link w-nav-link">Log In</a>
+          <a href="#" class="nav-link w-nav-link">Add Accomplishment</a>
+          <a href="#" class="nav-link w-nav-link">My Week</a>
+          <a href="#" class="nav-link w-nav-link">Today</a>
+        </nav>
+      </div>
+    </div>
+
     <div class="container">
 
-      <% flash.each do |k, v| %>
-        <%= content_tag :div, v, class: "flash-#{k}" %>
-      <% end %>
+      <div>
 
-      <%= yield %>
+        <% flash.each do |k, v| %>
+          <%= content_tag :div, v, class: "flash-#{k}" %>
+        <% end %>
+
+        <%= yield %>
+
+      </div>
+
     </div>
+
+    <div class="navbar">
+      <div>
+        <h3 class="heading">Making a sprint into a marathon. Using 7.</h3>
+      </div>
+    </div>
+
   </body>
 </html>
