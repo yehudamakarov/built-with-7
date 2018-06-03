@@ -11,8 +11,9 @@
 
   <body>
     <div class="container">
-      <% if @message %>
-        <h2><%= @message %></h2>
+
+      <% flash.each do |k, v| %>
+        <%= content_tag :div, v, class: "flash-#{k}" %>
       <% end %>
 
       <%= yield %>

@@ -1,32 +1,37 @@
 class SessionsController < ApplicationController
 
   def new
-    @message = params[:message]
+
   end
 
   def create
     if auth_hash
       @identity = get_or_create_identity(auth_hash)
       self.current_user = @identity.user
+      flash[:login_notice] = 'You have succesfully logged in!'
       return redirect_to user_path(self.current_user)
     else
       if login_params
         @user = User.find_by(email: login_params[:email])
         if @user.try(:password_digest)
           if @user.authenticate(login_params[:password])
+            flash[:login_notice] = 'You have succesfully logged in!'
             return self.current_user = @user
           end
         else
-          return redirect_to login_path(message: 'Please try to log in with a service or double check your password.')
+          flash[:login_error] = 'Please try to log in with a service or double check your password.'
+          return redirect_to login_path
         end
       else
-        return redirect_to login_path(message: 'Please make sure to enter both your email and password.')
+        flash[:login_error] = 'Please make sure to enter both your email and password.'
+        return redirect_to login_path
       end
     end
   end
 
   def destroy
     session.clear
+    flash[:logout_notice] = 'You have succesfully logged out and cleared the session'
     redirect_to '/'
   end
 

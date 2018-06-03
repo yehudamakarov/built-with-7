@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
 
   def welcome
-    @message = params[:message]
+
   end
 
   def current_user
@@ -14,7 +14,8 @@ class ApplicationController < ActionController::Base
 
   def redirect_because_logged_in
     if logged_in?
-      redirect_to user_path(current_user, message: 'Already logged in.')
+      flash[:logged_in] = 'Already logged in.'
+      redirect_to user_path(current_user)
     end
   end
 
@@ -29,7 +30,8 @@ class ApplicationController < ActionController::Base
     if logged_in?
       return
     else
-      redirect_to root_path(message: 'Please Log In.')
+      flash[:require_login] = 'Please Log In.'
+      redirect_to root_path
     end
   end
 
