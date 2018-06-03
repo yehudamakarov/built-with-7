@@ -7,23 +7,34 @@ class AccomplishmentsController < ApplicationController
   end
 
   def new
-    @accomplishment = Accomplishment.new(user: current_user)
+    @user = current_user
+    @accomplishment = Accomplishment.new(user: @user, day: Time.zone.now.strftime('%A'))
   end
 
   def create
-    # take the day of the week entered in the form, and change the date if need be. Defaults to today. set a different datetime in the block.
+
+    # Sets the date_time of the accomplishment to the last occuring weekday specified on the form, using the time of day specified by the form.
+
     @accomplishment = Accomplishment.new(accomplishment_params) do |a|
-      a.day = a.date_time.strftime('%A')
+
+      current_datetime = a.date_time_of_task_with_current_date
+      a.date_time = a.date_find(current_datetime, accomplishment_params[:day])
+      a.user = current_user
+      a.save
+
     end
+
+    redirect_to accomplishment_path(@accomplishment)
   end
 
   def show
-    #code
+    @accomplishment = Accomplishment.find(params[:id])
   end
 
   private
 
   def accomplishment_params
-    params.require(:accomplishment).permit(:title, :effect, :date_time, day_ids: [])
+    params.require(:accomplishment).permit(:title, :effect, :day, :date_time, day_ids: [])
   end
+
 end

@@ -1,0 +1,14 @@
+First Name: <%= @accomplishment.user.first_name %>
+<br>
+Last Name: <%= @accomplishment.user.last_name %>
+<br>
+Title: <%= @accomplishment.title %>
+<br>
+Effect: <%= @accomplishment.effect %>
+<br>
+DateTime: <%= @accomplishment.date_time %>
+<br>
+Days: <%= @accomplishment.days.map { |d| d.name } %>
+<br>
+Day: <%= @accomplishment.day %>
+<br>

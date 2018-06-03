@@ -1,13 +1,13 @@
 <%= form_for @accomplishment do |f| %>
-  Title: <%= f.text_field :title %>
+  What did you accomplish? <%= f.text_field :title %>
   <br>
-  Effect: <%= f.text_area :effect %>
+  Was it a game changer?: <%= f.text_area :effect %>
   <br>
-  <!-- When? <%= f.collection_select :day, @user.days, :id, :name %>
-  <br> -->
-  Time: <%= f.datetime_select :date_time, { discard_year: true, discard_month: true, minute_step: 15 }  %>
+  Which day of the week was this done on? <%= f.collection_select :day, @user.days, :name, :name %>
   <br>
-  Do This On: <%= f.collection_check_boxes :day_ids, @user.days, :id, :name %>
+  At what time? <%= f.datetime_select :date_time, { discard_year: true, discard_month: true, minute_step: 15 }  %>
+  <br>
+  Do this every: <%= f.collection_check_boxes :day_ids, @user.days, :id, :name %>
   <br>
   <%= f.submit "Accomplished!" %>
 
