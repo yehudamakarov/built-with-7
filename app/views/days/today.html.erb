@@ -1,0 +1,17 @@
+<h2>Today is <%= @day.name %></h2>
+
+<% if @day.accomplishments.empty? %>
+  <div>
+    Nothing tracked yet...
+  </div>
+  <br>
+  <%= link_to 'Add something you want to accomplish.', new_accomplishment_path %>
+<% else %>
+
+  <% @day.accomplishments.each do |acc| %>
+    <div>
+      <%= acc.name %>
+    </div>
+  <% end %>
+
+<% end %>

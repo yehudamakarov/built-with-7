@@ -36,15 +36,15 @@
 
     <div class="container">
 
-      <div>
 
-        <% flash.each do |k, v| %>
-          <%= content_tag :div, v, class: "flash-#{k}" %>
-        <% end %>
 
-        <%= yield %>
+      <% flash.each do |k, v| %>
+        <%= content_tag :div, v, class: "flash-#{k}" %>
+      <% end %>
 
-      </div>
+      <%= yield %>
+
+
 
     </div>
 
