@@ -7,14 +7,14 @@ class AccomplishmentsController < ApplicationController
   end
 
   def new
-    @user = current_user
-    @accomplishment = Accomplishment.new(user: @user)
-
+    @accomplishment = Accomplishment.new(user: current_user)
   end
 
   def create
-    @accomplishment = Accomplishment.new(accomplishment_params)
-    binding.pry
+    # take the day of the week entered in the form, and change the date if need be. Defaults to today. set a different datetime in the block.
+    @accomplishment = Accomplishment.new(accomplishment_params) do |a|
+      a.day = a.date_time.strftime('%A')
+    end
   end
 
   def show
