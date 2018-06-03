@@ -18,15 +18,18 @@
   <body>
     <div data-collapse="none" data-animation="default" data-duration="400" class="navbar w-nav">
       <div class="container w-container">
-        <a href="#" class="brand w-nav-brand">
+        <a href="/" class="brand w-nav-brand">
           <div class="text-block">Built With 7</div>
         </a>
         <nav role="navigation" class="nav-menu-2 w-nav-menu">
-          <a href="#" class="nav-link w-nav-link">Sign Up</a>
-          <a href="#" class="nav-link w-nav-link">Log In</a>
-          <a href="#" class="nav-link w-nav-link">Add Accomplishment</a>
-          <a href="#" class="nav-link w-nav-link">My Week</a>
-          <a href="#" class="nav-link w-nav-link">Today</a>
+          <% if logged_in? %>
+            <%= link_to 'Add Accomplishment', new_accomplishment_path, {class: "nav-link w-nav-link"} %>
+            <%= link_to 'My Week', user_path(current_user), {class: "nav-link w-nav-link"} %>
+            <%= link_to 'Today', today_path, {class: "nav-link w-nav-link"} %>
+          <% else %>
+            <%= link_to 'Sign Up', signup_path, {class: "nav-link w-nav-link"} %>
+            <%= link_to 'Log In', login_path, {class: "nav-link w-nav-link"} %>
+          <% end %>
         </nav>
       </div>
     </div>
