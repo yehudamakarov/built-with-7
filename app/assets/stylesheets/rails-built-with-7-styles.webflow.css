@@ -194,4 +194,7 @@
     -ms-flex-align: center;
     align-items: center;
   }
+  .phone-push-left-li {
+    margin-left: -42px;
+  }
 }
