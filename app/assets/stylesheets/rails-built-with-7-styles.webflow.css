@@ -41,6 +41,42 @@
   border-bottom-color: rgba(19, 17, 42, 0.71);
 }
 
+.day-heading {
+  margin-bottom: 7px;
+  width: 14%;
+  padding-bottom: 3px;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(19, 17, 42, 0.71);
+}
+
+.list-style {
+  margin-bottom: 7px;
+  width: 35%;
+  padding-bottom: 3px;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(19, 17, 42, 0.71);
+}
+.flexed-links-listing-div {
+  width: 49%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: stretch;
+  -webkit-align-items: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(19, 17, 42, 0.71);
+}
+
 @media (max-width: 991px) {
   .nav-menu {
     display: -webkit-box;
@@ -80,7 +116,6 @@
     height: 100%;
     width: 100%;
   }
-
   .day-choice {
     margin-bottom: 7px;
     width: 28%;
@@ -89,6 +124,51 @@
     border-bottom-width: 1px;
     border-bottom-color: rgba(19, 17, 42, 0.71);
   }
+  .day-heading {
+    margin-bottom: 7px;
+    width: 28%;
+    padding-bottom: 3px;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: rgba(19, 17, 42, 0.71);
+  }
+  .flexed-links-listing-div {
+    width: 98%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-around;
+    -webkit-box-align: stretch;
+    -webkit-align-items: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: rgba(19, 17, 42, 0.71);
+  }
+  .phone-push-left {
+    margin-right: 21%;
+  }
+  .phone-push-right {
+    margin-right: -21%;
+    margin-left: 21%;
+  }
+  .list-style {
+    margin-bottom: 7px;
+    width: 100%;
+    padding-bottom: 3px;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: rgba(19, 17, 42, 0.71);
+  }
+  .phone-listed {
+    width: 49%;
+  }
+
 }
 
 @media (max-width: 767px) {

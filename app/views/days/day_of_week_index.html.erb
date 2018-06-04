@@ -1,0 +1,6 @@
+<h1>All User's <%= @name_of_day %>s</h1>
+
+<% @days.each do |week_day| %>
+  <div class="list-style">
+    <%= @name_of_day %> for <%= link_to(week_day.user.full_name, day_path(week_day)) %></div>
+<% end %>

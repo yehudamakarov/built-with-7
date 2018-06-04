@@ -82,4 +82,8 @@ class User < ApplicationRecord
     self.days.find_by(name: 'Saturday')
   end
 
+  def full_name
+    self.first_name + ' ' + self.last_name
+  end
+
 end

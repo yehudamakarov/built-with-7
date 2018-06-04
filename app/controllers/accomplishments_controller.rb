@@ -31,6 +31,18 @@ class AccomplishmentsController < ApplicationController
     @accomplishment = Accomplishment.find(params[:id])
   end
 
+  def edit
+    #code
+  end
+
+  def update
+    #code
+  end
+
+  def destroy
+    #code
+  end
+
   private
 
   def accomplishment_params

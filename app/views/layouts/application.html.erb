@@ -21,6 +21,9 @@
         <a href="/" class="brand w-nav-brand">
           <div class="text-block">Built With 7</div>
         </a>
+        <% if logged_in? %>
+          <%= link_to 'Log Out', logout_path, {class: "nav-link w-nav-link"} %>
+        <% end %>
         <nav role="navigation" class="nav-menu-2 w-nav-menu">
           <% if logged_in? %>
             <%= link_to 'Add Accomplishment', new_accomplishment_path, {class: "nav-link w-nav-link"} %>

@@ -1,2 +1,26 @@
-<h1>Days#show</h1>
-<p>Find me in app/views/days/show.html.erb</p>
+<% if @day.user == current_user %>
+  <h2>Your <%= @day.name %></h2>
+<% else %>
+  <h2><%= @day.name %></h2>
+<% end %>
+
+<% if @day.accomplishments.empty? %>
+  <div>
+    Nothing tracked yet...
+  </div>
+  
+  <br>
+
+  <% if @day.user == current_user %>
+    <%= link_to 'Add something you want to accomplish.', new_accomplishment_path %>
+  <% end %>
+
+<% else %>
+
+  <% @day.accomplishments.each do |acc| %>
+    <div>
+      <%= acc.name %>
+    </div>
+  <% end %>
+
+<% end %>

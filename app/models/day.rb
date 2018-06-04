@@ -5,4 +5,8 @@ class Day < ApplicationRecord
 
 
   validates_uniqueness_of :name, scope: :user_id
+
+  def user_unique_link
+    self.user.full_name + "\'s " + self.name
+  end
 end
