@@ -27,7 +27,15 @@ class Accomplishment < ApplicationRecord
   end
 
   def time_of_accompmlishment
-    self.date_time.strftime("%l:%M %p")
+    self.date_time.strftime('%l:%M %p')
+  end
+
+  def human_date_time
+    self.date_time.strftime('%A, the %eth of %B at %l:%M %p')
+  end
+
+  def list_days
+    self.days.map { |d| d.name }.join(', ')
   end
 
 end

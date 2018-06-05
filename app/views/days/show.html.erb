@@ -3,18 +3,15 @@
 <% else %>
   <h2><%= @day.name %></h2>
 <% end %>
+<div class="list-style">
+  <%= link_to 'Add something.', new_weekday_accomplishment_path(@day.name.downcase) %>
+</div>
 
 <% if @day.accomplishments.empty? %>
-  <div>
+  <div class="list-style">
     Nothing tracked yet...
   </div>
-
   <br>
-
-  <% if @day.user == current_user %>
-    <%= link_to 'Add something you want to accomplish.', new_accomplishment_path %>
-  <% end %>
-
 <% else %>
 
 <!-- Proper show logic for the viewing of a single day -->

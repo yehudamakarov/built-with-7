@@ -1,10 +1,10 @@
 class AccomplishmentsController < ApplicationController
 
-  before_action :require_login
-  skip_before_action :require_login, only: [:index, :day_of_week_index]
+  before_action :require_login, only: [:new, :edit]
+
 
   def index
-    #code
+    @accomplishments = Accomplishment.all
   end
 
   def day_of_week_index
@@ -14,7 +14,11 @@ class AccomplishmentsController < ApplicationController
 
   def new
     @user = current_user
-    @accomplishment = Accomplishment.new(user: @user, day: Time.zone.now.strftime('%A'))
+    if params[:day]
+      @accomplishment = Accomplishment.new(user: @user, day: params[:day].capitalize)
+    else
+      @accomplishment = Accomplishment.new(user: @user, day: Time.zone.now.strftime('%A'))
+    end
   end
 
   def create
@@ -38,15 +42,28 @@ class AccomplishmentsController < ApplicationController
   end
 
   def edit
-    #code
+    @user = current_user
+    @accomplishment = Accomplishment.find(params[:id])
   end
 
   def update
-    #code
+    @accomplishment = Accomplishment.find(params[:id])
+    @accomplishment.assign_attributes(accomplishment_params)
+    day_of_week = @accomplishment.user.days.find_by(name: @accomplishment.date_time.strftime('%A'))
+
+    @accomplishment.day = day_of_week.name
+    if accomplishment_params[:day_ids].length <= 1
+      @accomplishment.days << day_of_week
+    end
+    @accomplishment.save
+    redirect_to accomplishment_path(@accomplishment)
   end
 
   def destroy
-    #code
+    @accomplishment = Accomplishment.find(params[:id])
+    @accomplishment.destroy
+    flash[:deleted] = 'Accomplishment removed.'
+    redirect_to user_path(current_user)
   end
 
   private

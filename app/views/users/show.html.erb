@@ -1,37 +1,47 @@
+<h6>Name: <%= @user.first_name %> <%= @user.last_name %> || Email Address: <%= @user.email %></h6>
 <% if @user == current_user %>
+  <%= link_to 'Edit Profile', edit_user_path(current_user) %>
   <h1>Your Week</h1>
 <% else %>
-  <h5>Users' Name: <%= @user.first_name %> <%= @user.last_name %></h5>
-  <h5>Email Address: <%= @user.email %></h5>
-
   <h1><%= @user.first_name %> <%= @user.last_name %>'s Week</h1>
 <% end %>
 
 
 
+
 <% @user.days.each do |day| %>
-  <div class="phone-listed">
-    <div class="list-style">
+  <div class="list-style">
+    <div class="">
       <%= link_to day.name, user_day_path(@user.id, day) %>
     </div>
-    <div>
-      <ul>
-        <% day.accomplishments.each do |acc| %>
-          <li class="phone-push-left-li">
-            <div class ="flexed-links-listing-div">
-              <div class="phone-push-left">
-                <%= acc.title %>
-              </div>
-              <div class="phone-push-right">
-                <%= link_to 'Details', accomplishment_path(acc) %>
-                <%= link_to 'Edit', edit_accomplishment_path(acc) %>
-                <%= link_to 'Remove', accomplishment_path(acc), method: :delete %>
-              </div>
-            </div>
-          </li>
-        <% end %>
-      </ul>
+    <% if logged_in? %>
+    <div class="smaller">
+      <%= link_to 'Add', new_weekday_accomplishment_path(day.name.downcase)  %>
     </div>
+    <% end %>
   </div>
 
+  <div class="width-fix">
+    <ul>
+      <% day.accomplishments.each do |acc| %>
+        <li class="">
+          <div class ="accomplishment-list-style">
+            <div class="">
+              <%= acc.title %>
+            </div>
+            <div class="">
+              <%= link_to 'Details', accomplishment_path(acc) %>
+              <% if current_user == @user %>
+              |
+              <%= link_to 'Edit', edit_accomplishment_path(acc) %>
+              |
+              <%= link_to 'Remove', accomplishment_path(acc), method: :delete %>
+              <% end %>
+
+            </div>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
 <% end %>

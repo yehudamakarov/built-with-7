@@ -1,10 +1,11 @@
 class User < ApplicationRecord
   has_many :identities
 
+  validates_format_of :email,:with => /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/
   validates_uniqueness_of :email, {case_sensitive: false}
+  validates_presence_of :email, :first_name, :last_name
 
   has_secure_password validations: false
-
   validates :password, presence: true, unless: :skip_password_validation
   validates :password, confirmation: true
   validates :password_confirmation, presence: true, unless: :skip_password_validation

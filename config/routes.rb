@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   # model stuff
   resources :users do
-    resources :days, only: [:show]
+    resources :days, only: [:show, :new]
   end
   resources :accomplishments
 
@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   get '/today' => 'days#today'
 
   get '/weekdays/:day' => 'accomplishments#day_of_week_index', as: 'day_of_week'
+  get '/weekdays/:day/accomplishments/new' => 'accomplishments#new', as: 'new_weekday_accomplishment'
 
 
 

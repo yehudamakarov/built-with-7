@@ -1,4 +1,4 @@
-<h1>Add an Accomplishment</h1>
+<h1>Edit an Accomplishment</h1>
 
 <%= form_for @accomplishment do |f| %>
   What's the accomplishment?
@@ -9,13 +9,9 @@
   <br>
   <%= f.text_area :effect %>
   <br>
-  Accomplish(ed) on a:
-  <br>
-  <%= f.collection_select :day, @user.days, :name, :name %>
-  <br>
   At what time?
   <br>
-  <%= f.datetime_select :date_time, { discard_year: true, discard_month: true, minute_step: 15 }  %>
+  <%= f.datetime_select :date_time, { minute_step: 15 }  %>
   <br>
   Do this every:
   <br>
@@ -26,7 +22,5 @@
     </div>
   <% end %>
   <br>
-  <%= f.submit "Accomplished!" %>
-
-
+  <%= f.submit "Update!" %>
 <% end %>

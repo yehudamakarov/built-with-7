@@ -1,0 +1,18 @@
+<h1>Edit Profile</h1>
+
+<%= form_for @user do |f| %>
+  First Name:
+  <br>
+  <%= f.text_field :first_name %>
+  <br>
+  Last Name:
+  <br>
+  <%= f.text_field :last_name %>
+  <br>
+  Email Address:
+  <br>
+  <%= f.email_field :email %>
+  <br>
+  <%= f.submit 'Update!' %>
+
+<% end %>
