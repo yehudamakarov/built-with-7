@@ -8,7 +8,7 @@
   <div>
     Nothing tracked yet...
   </div>
-  
+
   <br>
 
   <% if @day.user == current_user %>
@@ -17,9 +17,19 @@
 
 <% else %>
 
+<!-- Proper show logic for the viewing of a single day -->
   <% @day.accomplishments.each do |acc| %>
-    <div>
-      <%= acc.name %>
+    <div class="list-style">
+      <div><%= link_to acc.title, acc %></div>
+      <div><%= acc.time_of_accompmlishment %></div>
+    </div>
+    <div class="effect">
+      <%= acc.effect %>
+    </div>
+    <div class="doing-on">
+      Every: <% acc.days.each do |day_obj| %>
+        |<%= link_to day_obj.name, day_path(day_obj) %>|
+      <% end %>
     </div>
   <% end %>
 

@@ -1,9 +1,15 @@
 class AccomplishmentsController < ApplicationController
 
   before_action :require_login
+  skip_before_action :require_login, only: [:index, :day_of_week_index]
 
   def index
     #code
+  end
+
+  def day_of_week_index
+    @days = Day.where(name: params[:day])
+    @name_of_day = params[:day]
   end
 
   def new

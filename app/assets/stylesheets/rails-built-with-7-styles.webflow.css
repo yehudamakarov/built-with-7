@@ -51,9 +51,13 @@
 }
 
 .list-style {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
   margin-bottom: 7px;
-  width: 35%;
+  width: 49%;
   padding-bottom: 3px;
+  font-size: 1.2em;
   border-bottom-style: solid;
   border-bottom-width: 1px;
   border-bottom-color: rgba(19, 17, 42, 0.71);
@@ -76,8 +80,27 @@
   border-bottom-width: 1px;
   border-bottom-color: rgba(19, 17, 42, 0.71);
 }
-
-@media (max-width: 991px) {
+.effect {
+  font-size: .8em;
+  margin-bottom: 7px;
+  width: 77%;
+  padding-bottom: 7px;
+  padding-left: 14px;
+}
+.doing-on {
+  font-size: .8em;
+  margin-bottom: 7px;
+  width: 77%;
+  padding-bottom: 7px;
+  padding-left: 14px;
+}
+@media (max-width: 800px) {
+  .effect {
+    width: 77%;
+  }
+  .doing-on {
+    width: 77%;
+  }
   .nav-menu {
     display: -webkit-box;
     display: -webkit-flex;
@@ -133,7 +156,7 @@
     border-bottom-color: rgba(19, 17, 42, 0.71);
   }
   .flexed-links-listing-div {
-    width: 98%;
+    width: 77%;
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -141,7 +164,7 @@
     -webkit-box-pack: justify;
     -webkit-justify-content: space-between;
     -ms-flex-pack: justify;
-    justify-content: space-around;
+    justify-content: space-between;
     -webkit-box-align: stretch;
     -webkit-align-items: stretch;
     -ms-flex-align: stretch;
@@ -151,27 +174,26 @@
     border-bottom-color: rgba(19, 17, 42, 0.71);
   }
   .phone-push-left {
-    margin-right: 21%;
+    /* margin-right: 21%; */
   }
   .phone-push-right {
-    margin-right: -21%;
-    margin-left: 21%;
+    /* margin-right: -21%; */
+    /* margin-left: 21%; */
   }
   .list-style {
     margin-bottom: 7px;
-    width: 100%;
+    width: 77%;
     padding-bottom: 3px;
     border-bottom-style: solid;
     border-bottom-width: 1px;
     border-bottom-color: rgba(19, 17, 42, 0.71);
   }
   .phone-listed {
-    width: 49%;
+    width: 77%;
   }
-
-}
-
-@media (max-width: 767px) {
+  .phone-push-left-li {
+    /* margin-left: -42px; */
+  }
   a.nav-link {
     padding: 7px;
   }
@@ -194,7 +216,5 @@
     -ms-flex-align: center;
     align-items: center;
   }
-  .phone-push-left-li {
-    margin-left: -42px;
-  }
+
 }

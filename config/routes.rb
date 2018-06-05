@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   resources :days, only: [:index, :show]
   get '/today' => 'days#today'
 
-  get '/weekdays/:day' => 'days#day_of_week_index', as: 'day_of_week'
+  get '/weekdays/:day' => 'accomplishments#day_of_week_index', as: 'day_of_week'
 
 
 

@@ -1,15 +1,10 @@
 class DaysController < ApplicationController
 
   before_action :require_login
-  skip_before_action :require_login, only: [:index]
+  skip_before_action :require_login, only: [:index, :show]
 
   def index
     @days_of_the_week = DateTime::DAYNAMES
-  end
-
-  def day_of_week_index
-    @days = Day.where(name: params[:day])
-    @name_of_day = params[:day]
   end
 
   def show
@@ -22,5 +17,6 @@ class DaysController < ApplicationController
 
   def today
     @day = current_user.days.find_by(name: Time.zone.now.strftime('%A'))
+    render :show
   end
 end

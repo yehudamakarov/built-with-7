@@ -16,19 +16,18 @@ class Accomplishment < ApplicationRecord
   end
 
   def date_find(date_time, previous_weekday)
-
     index_of_previous_weekday = DateTime::DAYNAMES.index(previous_weekday)
-
     index_of_current_weekday = date_time.wday
-
     if index_of_previous_weekday < index_of_current_weekday
       previous_date = date_time.days_ago(index_of_current_weekday - index_of_previous_weekday)
     else
       previous_date = date_time.days_ago(7 - (index_of_previous_weekday - index_of_current_weekday))
     end
-
     return previous_date
+  end
 
+  def time_of_accompmlishment
+    self.date_time.strftime("%l:%M %p")
   end
 
 end
