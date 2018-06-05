@@ -26,15 +26,16 @@ class AccomplishmentsController < ApplicationController
     # Sets the date_time of the accomplishment to the last occuring weekday specified on the form, using the time of day specified by the form.
 
     @accomplishment = Accomplishment.new(accomplishment_params) do |a|
-
       current_datetime = a.date_time_of_task_with_current_date
       a.date_time = a.date_find(current_datetime, accomplishment_params[:day])
       a.user = current_user
-      a.save
-
     end
 
-    redirect_to accomplishment_path(@accomplishment)
+    if @accomplishment.save
+      redirect_to accomplishment_path(@accomplishment)
+    else
+      render :new
+    end
   end
 
   def show
@@ -55,8 +56,11 @@ class AccomplishmentsController < ApplicationController
     if accomplishment_params[:day_ids].length <= 1
       @accomplishment.days << day_of_week
     end
-    @accomplishment.save
-    redirect_to accomplishment_path(@accomplishment)
+    if @accomplishment.save
+      redirect_to accomplishment_path(@accomplishment)
+    else
+      render :edit
+    end
   end
 
   def destroy

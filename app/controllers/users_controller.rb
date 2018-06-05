@@ -32,9 +32,12 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.skip_password_validation = true
     @user.update(edit_params)
-    @user.save
-    flash[:updated] = 'Update succesful.'
-    redirect_to user_path(@user)
+    if @user.save
+      flash[:updated] = 'Update succesful.'
+      redirect_to user_path(@user)
+    else
+      render :edit
+    end
   end
 
   private
