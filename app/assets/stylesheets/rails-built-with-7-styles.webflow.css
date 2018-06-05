@@ -97,7 +97,7 @@
   width: 35%;
   padding-bottom: 7px;
   padding-left: 14px;
-  word-break: break-all;
+  word-break:normal;
 }
 .doing-on {
   font-size: .8em;

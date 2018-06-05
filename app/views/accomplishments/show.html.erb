@@ -1,14 +1,32 @@
-First Name: <%= @accomplishment.user.first_name %>
-<br>
-Last Name: <%= @accomplishment.user.last_name %>
-<br>
-Title: <%= @accomplishment.title %>
-<br>
-Effect: <%= @accomplishment.effect %>
-<br>
-DateTime: <%= @accomplishment.date_time %>
-<br>
-Days: <%= @accomplishment.days.map { |d| d.name } %>
-<br>
-Day: <%= @accomplishment.day %>
-<br>
+<div class="list-style">
+  <div class="">
+    <%= @accomplishment.title %>
+  </div>
+  <div class="">
+    <%= @accomplishment.time_of_accompmlishment %>
+  </div>
+</div>
+<div class="effect">
+  <%= @accomplishment.effect %>
+</div>
+<div class="doing-on">
+  Every: <% @accomplishment.days.each do |day_obj| %>
+    |<%= link_to day_obj.name, day_path(day_obj) %>|
+  <% end %>
+</div>
+<div class="list-style">
+  <div class="">
+    Since:
+  </div>
+  <div class="">
+    <%= @accomplishment.human_date_time %>
+  </div>
+</div>
+<div class="list-style">
+  <div class="">
+    <%= link_to 'Edit', edit_accomplishment_path(@accomplishment) %>
+  </div>
+  <div class="">
+    <%= link_to 'Remove', accomplishment_path(@accomplishment), method: :delete %>
+  </div>
+</div>
