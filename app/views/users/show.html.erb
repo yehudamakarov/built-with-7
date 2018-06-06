@@ -27,7 +27,7 @@
         <li class="">
           <div class ="accomplishment-list-style">
             <div class="">
-              <%= acc.title %>
+              <%= link_to acc.title, accomplishment_path(acc) %>
             </div>
             <div class="">
               <%= link_to 'Details', accomplishment_path(acc) %>

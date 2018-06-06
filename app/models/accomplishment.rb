@@ -3,7 +3,7 @@ class Accomplishment < ApplicationRecord
   has_many :days, through: :day_accomplishments
   belongs_to :user
 
-  validates :title, uniqueness: { case_sensitive: false }, presence: true
+  # validates :title, uniqueness: { case_sensitive: false }, presence: true
 
   def date_time_of_task_with_current_date
     DateTime.new(

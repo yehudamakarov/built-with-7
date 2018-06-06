@@ -61,8 +61,12 @@ class User < ApplicationRecord
     self.first_name + ' ' + self.last_name
   end
 
-  def self.most_accomplishments
-    self.inlcudes(:accomplishments)
+  def self.with_most_unique_accomplishments(amount)
+    self.joins(:accomplishments).group(:id).order(Arel.sql('count(accomplishments.id) desc')).limit(amount)
+  end
+
+  def self.with_bussiest_week(amount)
+    self.joins(:day_accomplishments).group(:id).order(Arel.sql('count(day_accomplishments.id) desc')).limit(amount)
   end
 
 end
