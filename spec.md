@@ -10,7 +10,7 @@ Specs:
     - \\ A user has many days and a day has many accomplishments. An accomplishment also has many days.
 - [ ] The "through" part of the has_many through includes at least one user submittable attribute (attribute_name e.g. ingredients.quantity)
     - \\ Not exactly. This is not within the scope of this project. There are only 7 days in a week.
-- [ ] Include reasonable validations for simple model objects (list of model objects with validations e.g. User, Recipe, Ingredient, Item)
+- [x] Include reasonable validations for simple model objects (list of model objects with validations e.g. User, Recipe, Ingredient, Item)
 - [ ] Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature e.g. User.most_recipes URL: /users/most_recipes)
 - [x] Include signup
     - \\ via Google, Github and app
@@ -22,8 +22,9 @@ Specs:
     - OmniAuth
 - [x] Include nested resource show or index (URL e.g. users/2/recipes)
     - \\ URL: /users/2/days/9
-- [ ] Include nested resource "new" form (URL e.g. recipes/1/ingredients)
-- [ ] Include form display of validation errors (form URL e.g. /recipes/new)
+- [x] Include nested resource "new" form (URL e.g. recipes/1/ingredients)
+    - \\ can make a new task from a day of the week.
+- [x] Include form display of validation errors (form URL e.g. /recipes/new)
 
 Confirm:
 - [ ] The application is pretty DRY

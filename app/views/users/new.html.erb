@@ -7,6 +7,19 @@
 <h3>Or,</h3>
 
 <%= form_for @user do |f| %>
+
+  <% if @user.errors.any? %>
+    <div class="error_explanation">
+      <h6><%= pluralize(@user.errors.count, "error") %> must be fixed before this accomplishment can be saved.</h6>
+
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   First Name:
   <br>
   <%= f.text_field :first_name %>

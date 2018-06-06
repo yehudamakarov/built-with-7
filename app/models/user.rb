@@ -36,14 +36,16 @@ class User < ApplicationRecord
   end
 
   def self.create_from_signup(signup_params)
-    @user = User.create(signup_params)
-    @user.days.create(name: 'Sunday')
-    @user.days.create(name: 'Monday')
-    @user.days.create(name: 'Tuesday')
-    @user.days.create(name: 'Wednesday')
-    @user.days.create(name: 'Thursday')
-    @user.days.create(name: 'Friday')
-    @user.days.create(name: 'Saturday')
+    @user = User.new(signup_params)
+    if @user.save
+      @user.days.create(name: 'Sunday')
+      @user.days.create(name: 'Monday')
+      @user.days.create(name: 'Tuesday')
+      @user.days.create(name: 'Wednesday')
+      @user.days.create(name: 'Thursday')
+      @user.days.create(name: 'Friday')
+      @user.days.create(name: 'Saturday')
+    end
     @user
   end
 

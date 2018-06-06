@@ -12,7 +12,8 @@ class UsersController < ApplicationController
   end
 
   def create
-    if @user = User.create_from_signup(signup_params)
+    @user = User.create_from_signup(signup_params)
+    if @user.save
       current_user = @user
       redirect_to user_path(@user)
     else
