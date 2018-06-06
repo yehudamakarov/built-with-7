@@ -34,7 +34,7 @@
 
 .day-choice {
   margin-bottom: 7px;
-  width: 14%;
+  width: 35%;
   padding-bottom: 3px;
   border-bottom-style: solid;
   border-bottom-width: 1px;
@@ -112,6 +112,30 @@
 .smaller {
   font-size: 0.8em
 }
+.error_explanation {
+  width: 50%;
+  border: 1px solid red;
+  padding: 7px 7px 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+
+  h6 {
+    padding: 5px 5px 5px 15px;
+    margin: -7px -7px 0;
+    background-color: #c00;
+    color: #fff;
+  }
+
+  ul li {
+    font-size: 12px;
+    list-style: square;
+  }
+}
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
 @media (max-width: 800px) {
   .effect {
     width: 35%;
@@ -159,7 +183,7 @@
   }
   .day-choice {
     margin-bottom: 7px;
-    width: 28%;
+    width: 35%;
     padding-bottom: 3px;
     border-bottom-style: solid;
     border-bottom-width: 1px;

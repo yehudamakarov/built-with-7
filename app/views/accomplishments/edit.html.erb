@@ -1,6 +1,19 @@
 <h1>Edit an Accomplishment</h1>
 
 <%= form_for @accomplishment do |f| %>
+
+  <% if @accomplishment.errors.any? %>
+    <div class="error_explanation">
+      <h6><%= pluralize(@accomplishment.errors.count, "error") %> must be fixed before this accomplishment can be saved.</h6>
+
+      <ul>
+      <% @accomplishment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   What's the accomplishment?
   <br>
   <%= f.text_field :title %>
