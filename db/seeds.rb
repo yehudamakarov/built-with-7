@@ -5,35 +5,30 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+users_json = open('./MOCK_DATA.json').read
+users_array = JSON.parse(users_json)
 
+users_array.each do |e|
+  u = User.new(e)
+  u.days.build(name: 'Sunday')
+  u.days.build(name: 'Monday')
+  u.days.build(name: 'Tuesday')
+  u.days.build(name: 'Wednesday')
+  u.days.build(name: 'Thursday')
+  u.days.build(name: 'Friday')
+  u.days.build(name: 'Saturday')
+  u.skip_password_validation = true
+  u.save
+end
 
-the_one = User.create(
-  first_name: 'TheOne',
-  last_name: 'TheOnly',
-  email: 'yes@yes.com',
-  skip_password_validation: true
-)
+tasks_json = open('./MOCK_DATA_1.json').read
 
-the_one.days.create(name: 'Sunday')
-the_one.days.create(name: 'Monday')
-the_one.days.create(name: 'Tuesday')
-the_one.days.create(name: 'Wednesday')
-the_one.days.create(name: 'Thursday')
-the_one.days.create(name: 'Friday')
-the_one.days.create(name: 'Saturday')
+tasks_array = JSON.parse(tasks_json)
 
-the_one.monday.accomplishments.create(
-  title: 'Hugged Esther',
-  effect: 'Loved my wife.',
-  date_time: DateTime.now.days_ago(1),
-  user: the_one
-)
-
-accomplishment_1 = Accomplishment.create(
-  title: 'Did Chitas',
-  effect: 'Had a good connected energy for the rest of the night.',
-  date_time: DateTime.now,
-  user: the_one
-)
-
-accomplishment_1.days.push(the_one.monday, the_one.wednesday)
+tasks_array.each do |t|
+  a = Accomplishment.new(t)
+  a.user.days.sample(3).each do |d|
+    d.accomplishments << a
+  end
+  a.save
+end
