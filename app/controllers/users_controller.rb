@@ -41,6 +41,18 @@ class UsersController < ApplicationController
     end
   end
 
+  def with_most_unique_accomplishments
+    @users = User.with_most_unique_accomplishments(params[:amount])
+    flash[:showing] = 'Showing Users with most unique accomplishments'
+    render :index
+  end
+
+  def with_bussiest_week
+    @users = User.with_bussiest_week(params[:amount])
+    flash[:showing] = 'Showing Users with the bussiest week.'
+    render :index
+  end
+
   private
 
   def edit_params

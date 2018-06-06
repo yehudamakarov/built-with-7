@@ -25,6 +25,10 @@ Rails.application.routes.draw do
   get '/weekdays/:day' => 'accomplishments#day_of_week_index', as: 'day_of_week'
   get '/weekdays/:day/accomplishments/new' => 'accomplishments#new', as: 'new_weekday_accomplishment'
 
+  get '/users/with-most-unique-accomplishments/:amount' => 'users#with_most_unique_accomplishments', as: 'most_accomplishments'
+
+  get '/users/with-bussiest-week/:amount' => 'users#with_bussiest_week', as: 'bussiest_week'
+
 
 
 end
