@@ -25,6 +25,8 @@
   You should probably run a `rake db:migrate`.
   Then you can `rails start` on your localhost and use the web app.
 
+  If you would like to seed the database with a bunch of imaginary data so you can get a feel for the interface, after `bundle install` you can run `rake db:drop db:create db:migrate db:create`.
+
 * Contribute
 
   \\ Please feel free to contribute. Just open a pull request. If something is
