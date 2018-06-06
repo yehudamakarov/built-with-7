@@ -57,34 +57,6 @@ class User < ApplicationRecord
     full_name.split(' ')[-1]
   end
 
-  def sunday
-    self.days.find_by(name: 'Sunday')
-  end
-
-  def monday
-    self.days.find_by(name: 'Monday')
-  end
-
-  def tuesday
-    self.days.find_by(name: 'Tuesday')
-  end
-
-  def wednesday
-    self.days.find_by(name: 'Wednesday')
-  end
-
-  def thursday
-    self.days.find_by(name: 'Thursday')
-  end
-
-  def friday
-    self.days.find_by(name: 'Friday')
-  end
-
-  def saturday
-    self.days.find_by(name: 'Saturday')
-  end
-
   def full_name
     self.first_name + ' ' + self.last_name
   end
