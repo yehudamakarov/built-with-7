@@ -11,7 +11,7 @@ Specs:
 - [ ] The "through" part of the has_many through includes at least one user submittable attribute (attribute_name e.g. ingredients.quantity)
     - \\ Not exactly. This is not within the scope of this project. There are only 7 days in a week.
 - [x] Include reasonable validations for simple model objects (list of model objects with validations e.g. User, Recipe, Ingredient, Item)
-- [ ] Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature e.g. User.most_recipes URL: /users/most_recipes)
+- [x] Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature e.g. User.most_recipes URL: /users/most_recipes)
 - [x] Include signup
     - \\ via Google, Github and app
 - [x] Include login (how e.g. Devise)
@@ -27,7 +27,7 @@ Specs:
 - [x] Include form display of validation errors (form URL e.g. /recipes/new)
 
 Confirm:
-- [ ] The application is pretty DRY
-- [ ] Limited logic in controllers
-- [ ] Views use helper methods if appropriate
-- [ ] Views use partials if appropriate
+- [x] The application is pretty DRY
+- [x] Limited logic in controllers
+- [x] Views use helper methods if appropriate
+- [x] Views use partials if appropriate
