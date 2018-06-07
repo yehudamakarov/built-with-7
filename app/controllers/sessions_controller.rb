@@ -4,6 +4,7 @@ class SessionsController < ApplicationController
 
   end
 
+  # This can be cleaned up. Somehow. 
   def create
     if auth_hash
       @identity = get_or_create_identity(auth_hash)
