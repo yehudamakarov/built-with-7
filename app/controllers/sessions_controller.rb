@@ -35,6 +35,7 @@ class SessionsController < ApplicationController
     redirect_to '/'
   end
 
+  # refactor to the Identity model
   def get_or_create_identity(auth_hash)
     if @identity = Identity.find_from_auth(auth_hash)
       return @identity

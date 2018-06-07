@@ -7,6 +7,7 @@ class Identity < ApplicationRecord
     Identity.find_by(uid: auth_hash[:uid], provider: auth_hash[:provider])
   end
 
+  # this is not DOT, and this method should only be responsible for making a new Identity. The reason for this is using a user argument to make identities link to a logged in user.
   def self.create_from_auth(auth_hash, user = nil)
     user ||= User.find_or_create_by_auth(auth_hash)
     self.create(user: user, uid: auth_hash[:uid], provider: auth_hash[:provider])
