@@ -15,7 +15,7 @@
 <% else %>
 
 <!-- Proper show logic for the viewing of a single day -->
-  <% @day.accomplishments.each do |acc| %>
+  <% @day.accomplishments.order(Arel.sql('time(date_time) asc')).each do |acc| %>
     <div class="list-style">
       <div><%= link_to acc.title, acc %></div>
       <div><%= acc.time_of_accompmlishment %></div>

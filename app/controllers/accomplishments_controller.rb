@@ -15,9 +15,9 @@ class AccomplishmentsController < ApplicationController
   def new
     @user = current_user
     if params[:day]
-      @accomplishment = Accomplishment.new(user: @user, day: params[:day].capitalize)
+      @accomplishment = Accomplishment.new(day: params[:day].capitalize)
     else
-      @accomplishment = Accomplishment.new(user: @user, day: Time.zone.now.strftime('%A'))
+      @accomplishment = Accomplishment.new(day: Time.zone.now.strftime('%A'))
     end
   end
 
@@ -29,6 +29,9 @@ class AccomplishmentsController < ApplicationController
       current_datetime = a.date_time_of_task_with_current_date
       a.date_time = a.date_find(current_datetime, accomplishment_params[:day])
       a.user = @user
+      if a.days.empty?
+        a.days << a.user.days.find_by(name: accomplishment_params[:day])
+      end
     end
 
     if @accomplishment.save
@@ -51,9 +54,8 @@ class AccomplishmentsController < ApplicationController
     @accomplishment = Accomplishment.find(params[:id])
     @accomplishment.assign_attributes(accomplishment_params)
     day_of_week = @accomplishment.user.days.find_by(name: @accomplishment.date_time.strftime('%A'))
-
     @accomplishment.day = day_of_week.name
-    if accomplishment_params[:day_ids].length <= 1
+    if @accomplishment.days.empty?
       @accomplishment.days << day_of_week
     end
     if @accomplishment.save
