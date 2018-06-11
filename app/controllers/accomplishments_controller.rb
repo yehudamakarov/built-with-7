@@ -22,18 +22,8 @@ class AccomplishmentsController < ApplicationController
   end
 
   def create
-
-    # Sets the date_time of the accomplishment to the last occuring weekday specified on the form, using the time of day specified by the form.
     @user = current_user
-    @accomplishment = Accomplishment.new(accomplishment_params) do |a|
-      current_datetime = a.date_time_of_task_with_current_date
-      a.date_time = a.date_find(current_datetime, accomplishment_params[:day])
-      a.user = @user
-      if a.days.empty?
-        a.days << a.user.days.find_by(name: accomplishment_params[:day])
-      end
-    end
-
+    @accomplishment = Accomplishment.new_from_params(accomplishment_params, @user)
     if @accomplishment.save
       redirect_to accomplishment_path(@accomplishment)
     else
