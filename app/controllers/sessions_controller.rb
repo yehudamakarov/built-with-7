@@ -1,10 +1,8 @@
 class SessionsController < ApplicationController
 
   def new
-
   end
 
-  # This can be cleaned up. Somehow.
   def create
     if auth_hash
       @identity = Identity.get_or_create_identity(auth_hash)
@@ -44,7 +42,5 @@ class SessionsController < ApplicationController
     else
       params.permit(:email, :password)
     end
-
   end
-
 end
