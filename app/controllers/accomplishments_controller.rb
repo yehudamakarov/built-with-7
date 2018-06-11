@@ -1,6 +1,7 @@
 class AccomplishmentsController < ApplicationController
 
-  before_action :require_login, only: [:new, :edit]
+  before_action :require_login, only: [:new, :create, :edit, :update]
+  before_action :set_accomplishment, only: [:show, :edit, :update, :destroy]
 
 
   def index
@@ -32,16 +33,13 @@ class AccomplishmentsController < ApplicationController
   end
 
   def show
-    @accomplishment = Accomplishment.find(params[:id])
   end
 
   def edit
     @user = current_user
-    @accomplishment = Accomplishment.find(params[:id])
   end
 
   def update
-    @accomplishment = Accomplishment.find(params[:id])
     @accomplishment.update_from_params(accomplishment_params)
     if @accomplishment.save
       redirect_to accomplishment_path(@accomplishment)
@@ -51,7 +49,6 @@ class AccomplishmentsController < ApplicationController
   end
 
   def destroy
-    @accomplishment = Accomplishment.find(params[:id])
     @accomplishment.destroy
     flash[:deleted] = 'Accomplishment removed.'
     redirect_to user_path(current_user)
@@ -61,6 +58,10 @@ class AccomplishmentsController < ApplicationController
 
   def accomplishment_params
     params.require(:accomplishment).permit(:title, :effect, :day, :date_time, day_ids: [])
+  end
+
+  def set_accomplishment
+    @accomplishment = Accomplishment.find(params[:id])
   end
 
 end
