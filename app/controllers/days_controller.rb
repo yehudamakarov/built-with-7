@@ -1,8 +1,7 @@
 class DaysController < ApplicationController
 
-  before_action :require_login
-  skip_before_action :require_login, only: [:index, :show]
-
+  before_action :require_login, only: [:today]
+  
   def index
     @days_of_the_week = DateTime::DAYNAMES
   end
