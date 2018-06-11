@@ -17,6 +17,15 @@ class Accomplishment < ApplicationRecord
     end
   end
 
+  def update_from_params(params)
+    self.assign_attributes(params)
+    day_of_week = self.user.days.find_by(name: self.date_time.strftime('$A'))
+    self.day = day_of_week.name
+    if self.days.empty?
+      self.days << day_of_week
+    end
+  end
+
   def date_time_of_task_with_current_date
     DateTime.new(
       Time.zone.now.year,

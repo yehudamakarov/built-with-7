@@ -42,12 +42,7 @@ class AccomplishmentsController < ApplicationController
 
   def update
     @accomplishment = Accomplishment.find(params[:id])
-    @accomplishment.assign_attributes(accomplishment_params)
-    day_of_week = @accomplishment.user.days.find_by(name: @accomplishment.date_time.strftime('%A'))
-    @accomplishment.day = day_of_week.name
-    if @accomplishment.days.empty?
-      @accomplishment.days << day_of_week
-    end
+    @accomplishment.update_from_params(accomplishment_params)
     if @accomplishment.save
       redirect_to accomplishment_path(@accomplishment)
     else
