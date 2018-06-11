@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
   def create
     if auth_hash
       @identity = Identity.get_or_create_identity(auth_hash)
-      self.current_user = @identity.user
+      current_user = @identity.user
       flash[:login_notice] = 'You have succesfully logged in!'
       return redirect_to user_path(self.current_user)
     else
@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
         if @user.try(:password_digest)
           if @user.authenticate(login_params[:password])
             flash[:login_notice] = 'You have succesfully logged in!'
-            return self.current_user = @user
+            return current_user = @user
           end
         else
           flash[:login_error] = 'Please try to log in with a service or double check your password.'
@@ -31,7 +31,7 @@ class SessionsController < ApplicationController
   def destroy
     session.clear
     flash[:logout_notice] = 'You have succesfully logged out and cleared the session'
-    redirect_to '/'
+    redirect_to root_path
   end
 
   private
