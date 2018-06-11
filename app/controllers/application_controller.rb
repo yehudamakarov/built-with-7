@@ -1,7 +1,8 @@
 class ApplicationController < ActionController::Base
 
-  def welcome
+  helper_method :current_user, :logged_in?
 
+  def welcome
   end
 
   def current_user
@@ -19,13 +20,13 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  helper_method :current_user, :logged_in?
-
   def current_user=(user)
     session[:user_id] = user.id
     @current_user = user
   end
-# Why do we makes methods private? Should these be?
+
+  private
+
   def require_login
     if logged_in?
       return
@@ -34,8 +35,6 @@ class ApplicationController < ActionController::Base
       redirect_to root_path
     end
   end
-
-  private
 
   def auth_hash
     @auth_hash ||= request.env["omniauth.auth"]
