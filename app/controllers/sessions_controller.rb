@@ -4,10 +4,10 @@ class SessionsController < ApplicationController
 
   end
 
-  # This can be cleaned up. Somehow. 
+  # This can be cleaned up. Somehow.
   def create
     if auth_hash
-      @identity = get_or_create_identity(auth_hash)
+      @identity = Identity.get_or_create_identity(auth_hash)
       self.current_user = @identity.user
       flash[:login_notice] = 'You have succesfully logged in!'
       return redirect_to user_path(self.current_user)
@@ -34,15 +34,6 @@ class SessionsController < ApplicationController
     session.clear
     flash[:logout_notice] = 'You have succesfully logged out and cleared the session'
     redirect_to '/'
-  end
-
-  # refactor to the Identity model
-  def get_or_create_identity(auth_hash)
-    if @identity = Identity.find_from_auth(auth_hash)
-      return @identity
-    else
-      @identity = Identity.create_from_auth(auth_hash, self.current_user)
-    end
   end
 
   private
