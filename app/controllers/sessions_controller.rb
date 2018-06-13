@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
 
   def create
     if auth_hash
-      @identity = Identity.get_or_create_identity(auth_hash)
+      @identity = Identity.get_or_create_identity(auth_hash, self.current_user)
       self.current_user = @identity.user
       flash[:login_notice] = 'You have succesfully logged in!'
       return redirect_to user_path(self.current_user)

@@ -9,4 +9,8 @@ class Day < ApplicationRecord
   def user_unique_link
     self.user.full_name + "\'s " + self.name
   end
+
+  def accomplishments_by_day
+    self.accomplishments.order(Arel.sql('time(date_time) asc'))
+  end
 end

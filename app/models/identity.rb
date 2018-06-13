@@ -3,11 +3,11 @@ class Identity < ApplicationRecord
   validates_presence_of :uid, :provider, :user_id
   validates_uniqueness_of :uid, scope: :provider
 
-  def self.get_or_create_identity(auth_hash)
+  def self.get_or_create_identity(auth_hash, user)
     if identity = Identity.find_from_auth(auth_hash)
       return identity
     else
-      identity = Identity.create_from_auth(auth_hash, self.current_user)
+      identity = Identity.create_from_auth(auth_hash, user)
     end
   end
 
