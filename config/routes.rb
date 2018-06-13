@@ -29,6 +29,6 @@ Rails.application.routes.draw do
 
   get '/users/with-bussiest-week/:amount' => 'users#with_bussiest_week', as: 'bussiest_week'
 
-
+  get '/leaderboard' => 'users#leaderboard'
 
 end

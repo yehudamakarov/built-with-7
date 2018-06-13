@@ -1,0 +1,8 @@
+<h1>Top User</h1>
+<% if @top_user %>
+    <div>
+        Name: <%= @top_user.full_name %>
+        Amount of Accomplishments: <%= @top_user.accopmlishments.count %>
+    </div>
+<% end %>
+

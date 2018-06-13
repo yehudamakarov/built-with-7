@@ -15,7 +15,8 @@ class UsersController < ApplicationController
   def create
     @user = User.create_from_signup(signup_params)
     if @user.save
-      current_user = @user
+      self.current_user = @user
+      flash[:welcome] = 'Welcome! You made an account!'
       redirect_to user_path(@user)
     else
       render :new
@@ -58,6 +59,10 @@ class UsersController < ApplicationController
     render :index
   end
 
+  def leaderboard
+    @top_user = User.joins(:day_accomplishments).group(:id).order('count(day_accomplishments.id) desc').limit(1)[0]
+  end
+
   private
 
   def edit_params
@@ -71,4 +76,5 @@ class UsersController < ApplicationController
   def set_user
     @user = User.find(params[:id])
   end
+  
 end

@@ -25,6 +25,7 @@
           <%= link_to 'Log Out', logout_path, {class: "nav-link w-nav-link"} %>
         <% end %>
         <nav role="navigation" class="nav-menu-2 w-nav-menu">
+          <%= link_to 'Leaderboard', leaderboard_path, {class: "nav-link w-nav-link"} %>
           <% if logged_in? %>
             <%= link_to 'Add Accomplishment', new_accomplishment_path, {class: "nav-link w-nav-link"} %>
             <%= link_to 'My Week', user_path(current_user), {class: "nav-link w-nav-link"} %>

@@ -9,10 +9,10 @@ class Accomplishment < ApplicationRecord
   def self.new_from_params(params, user)
     self.new(params) do |a|
       current_datetime = a.date_time_of_task_with_current_date
-      a.date_time = a.date_find(current_datetime, accomplishment_params[:day])
+      a.date_time = a.date_find(current_datetime, params[:day])
       a.user = user
       if a.days.empty?
-        a.days << a.user.days.find_by(name: accomplishment_params[:day])
+        a.days << a.user.days.find_by(name: params[:day])
       end
     end
   end
