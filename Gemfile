@@ -43,6 +43,9 @@ group :development, :test do
   #javascripts
   gem 'jquery-rails'
 
+  #javascript-support
+  gem 'active-model-serializers'
+
   # debugging stuff
   gem 'pry'
   gem 'awesome_print'
