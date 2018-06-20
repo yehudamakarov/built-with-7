@@ -23,7 +23,7 @@
 
   <div class="width-fix">
     <ul>
-      <% day.accomplishments.order(Arel.sql('time(date_time) asc')).each do |acc| %>
+      <% day.accomplishments.each do |acc| %>
         <li class="">
           <div class ="accomplishment-list-style">
             <div class="">
