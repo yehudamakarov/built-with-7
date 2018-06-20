@@ -1,4 +1,5 @@
 class Accomplishment < ApplicationRecord
+  default_scope { order(Arel.sql('time(date_time) asc')) }
   has_many :day_accomplishments
   has_many :days, through: :day_accomplishments
   belongs_to :user

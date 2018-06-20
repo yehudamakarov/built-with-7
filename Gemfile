@@ -44,7 +44,7 @@ group :development, :test do
   gem 'jquery-rails'
 
   #javascript-support
-  gem 'active-model-serializers'
+  gem 'active_model_serializers'
 
   # debugging stuff
   gem 'pry'
