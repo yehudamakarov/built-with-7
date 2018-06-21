@@ -1,6 +1,6 @@
 class AccomplishmentsController < ApplicationController
 
-  before_action :require_login, only: [:new, :create, :edit, :update]
+  before_action :require_login, only: [:new, :create, :edit, :update, :destroy]
   before_action :set_accomplishment, only: [:show, :edit, :update, :destroy]
 
 
@@ -33,6 +33,10 @@ class AccomplishmentsController < ApplicationController
   end
 
   def show
+    respond_to do |format|
+      format.html { render :show }
+      format.json { render json: @accomplishment }
+    end
   end
 
   def edit

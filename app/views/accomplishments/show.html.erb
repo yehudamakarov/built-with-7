@@ -15,18 +15,18 @@
   <% end %>
 </div>
 <div class="list-style">
-  <div class="">
+  <div>
     Since:
   </div>
-  <div class="">
+  <div>
     <%= @accomplishment.human_date_time %>
   </div>
 </div>
 <div class="list-style">
-  <div class="">
+  <div>
     <%= link_to 'Edit', edit_accomplishment_path(@accomplishment) %>
   </div>
-  <div class="">
+  <div>
     <%= link_to 'Remove', accomplishment_path(@accomplishment), method: :delete %>
   </div>
 </div>

@@ -15,7 +15,7 @@
 <% else %>
 
 <!-- Proper show logic for the viewing of a single day -->
-  <% @day.accomplishments_by_day.each do |acc| %>
+  <% @day.accomplishments_by_time.each do |acc| %>
     <div class="list-style">
       <div><%= link_to acc.title, acc %></div>
       <div><%= acc.time_of_accompmlishment %></div>
@@ -27,6 +27,14 @@
       Every: <% acc.days.each do |day_obj| %>
         |<%= link_to day_obj.name, day_path(day_obj) %>|
       <% end %>
+      <div>
+        <%= link_to  "Info", acc, {class: "js-show"} %>
+      </div>
+    </div>
+    <div id="js-accomplishment-info-<%= acc.id %>">
+
     </div>
   <% end %>
 <% end %>
+
+<%= javascript_include_tag "accomplishmentShow" %>

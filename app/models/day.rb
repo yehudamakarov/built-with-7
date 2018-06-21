@@ -10,7 +10,7 @@ class Day < ApplicationRecord
     self.user.full_name + "\'s " + self.name
   end
 
-  def accomplishments_by_day
+  def accomplishments_by_time
     self.accomplishments.order(Arel.sql('time(date_time) asc'))
   end
 end
