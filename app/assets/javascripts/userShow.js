@@ -3,10 +3,9 @@ $(function() {
         e.preventDefault();
         const JSONPath = `${e.target.pathname}.json`;
         $.getJSON(JSONPath, function(respData) {
-            window.respData = respData;
-            console.log('respData :', respData);
-            // HandleBarsTemplates['accomplishments_list']({accomplishments:
-            // respData.data})
+            const toInsert = new TemplateEntry(respData);
+            const newHTML = toInsert.templateString();
+            $(`#js-user-info-${toInsert.userId}`).html(newHTML).addClass("open-up");
         });
     });
 });
@@ -19,16 +18,19 @@ $(function() {
  */
 class TemplateEntry {
     constructor(respData) {
+        this.userId = parseInt(respData.data.id);
         this.days = [
             ...respData.included.map(function(obj) {
                 return {
                     userId: parseInt(respData.data.id),
                     dayId: parseInt(obj.id),
+                    dayName: obj.attributes.name,
                     accomplishments: [
-                        ...obj.attributes.accomplishments.data.map(function(accomplishment) {
+                        ...obj.attributes.accomplishments.map(function(accomplishment) {
                             return {
                                 id: parseInt(accomplishment.id),
-                                humanTime: ''
+                                title: accomplishment.title,
+                                humanTime: accomplishment['human-time'],
                             }
                         })
                     ],
@@ -38,7 +40,7 @@ class TemplateEntry {
     }
 
     templateString() {
-        return HandlebarsTemplates['accomplishments_list'](
+        return HandlebarsTemplates['days_list'](
             {
                 days: this.days,
             }

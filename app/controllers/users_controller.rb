@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :redirect_because_logged_in, only: [:new]
   before_action :require_login, only: [:edit]
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:edit, :update, :destroy]
 
 
   def index
@@ -24,6 +24,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @user = User.includes(days: :accomplishments).find(params[:id])
     respond_to do |format|
       format.html { render :show }
       format.json { render json: @user, include: ['days'] }

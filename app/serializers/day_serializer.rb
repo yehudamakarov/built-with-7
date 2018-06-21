@@ -1,5 +1,5 @@
 class DaySerializer < ActiveModel::Serializer
-  attributes :id, :accomplishments
+  attributes :id, :name, :accomplishments
 
   def accomplishments
     object.accomplishments.map do |acc|

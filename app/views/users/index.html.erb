@@ -5,7 +5,7 @@
     <%= link_to "#{user.first_name} #{user.last_name}", user %>
     <%= link_to "Show Accomplishments", user, {class: "js-show"} %>
   </div>
-  <div class="js-user-info-<%= user.id %>">
+  <div id="js-user-info-<%= user.id %>">
 
   </div>
 <% end %>
