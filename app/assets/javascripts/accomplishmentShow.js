@@ -2,10 +2,9 @@ $(function () {
     $('.js-show').click(function(e) {
         e.preventDefault();
         const JSONPath = `${e.target.pathname}.json`;
-        const toInsert, newHTML;
         $.getJSON(JSONPath, function(respData) {
-            toInsert = new TemplateEntry(respData);
-            newHTML = toInsert.templateString();
+            const toInsert = new TemplateEntry(respData);
+            const newHTML = toInsert.templateString();
             $(`#js-accomplishment-info-${toInsert.accomplishmentId}`)
                 .html(newHTML)
                 .addClass("open-up");
