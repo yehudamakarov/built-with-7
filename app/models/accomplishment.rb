@@ -11,6 +11,7 @@ class Accomplishment < ApplicationRecord
     self.new(params) do |a|
       current_datetime = a.date_time_of_task_with_current_date
       a.date_time = a.date_find(current_datetime, params[:day])
+      a.human_time = a.time_of_accompmlishment
       a.user = user
       if a.days.empty?
         a.days << a.user.days.find_by(name: params[:day])
@@ -22,6 +23,7 @@ class Accomplishment < ApplicationRecord
     self.assign_attributes(params)
     day_of_week = self.user.days.find_by(name: self.date_time.strftime('$A'))
     self.day = day_of_week.name
+    self.human_time = self.time_of_accompmlishment
     if self.days.empty?
       self.days << day_of_week
     end

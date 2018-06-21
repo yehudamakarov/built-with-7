@@ -2,7 +2,8 @@
 
 <% @users.each do |user| %>
   <div class="list-style">
-    <%= link_to "#{user.first_name} #{user.last_name}", user, {class: "js-show"} %>
+    <%= link_to "#{user.first_name} #{user.last_name}", user %>
+    <%= link_to "Show Accomplishments", user, {class: "js-show"} %>
   </div>
   <div class="js-user-info-<%= user.id %>">
 

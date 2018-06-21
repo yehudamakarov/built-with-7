@@ -45,6 +45,7 @@ group :development, :test do
 
   #javascript-support
   gem 'active_model_serializers'
+  gem 'handlebars_assets'
 
   # debugging stuff
   gem 'pry'

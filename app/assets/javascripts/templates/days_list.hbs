@@ -1,0 +1,30 @@
+{{#days}}
+  <div class="list-style">
+      <div>
+        <a href="/users/{{this.usrId}}/days/{{this.dayId}}">Sunday</a>
+      </div>
+      <div class="smaller">
+        --
+      </div>
+  </div>
+  <div class="width-fix">
+    <ul>
+      {{#this.accomplishments}}
+        <li>
+          <div class="accomplishment-list-style">
+            <div>
+              <span>{{this.title}}</span>
+            </div>
+            <div>
+                {{!-- 2:45 AM --}}
+                {{this.humanTime}}
+              |♥|
+              <a href="/accomplishments/{{this.id}}">Details</a>
+              |
+            </div>
+          </div>
+        </li>
+      {{/this.accomplishments}}
+    </ul>
+  </div>
+{{/days}}

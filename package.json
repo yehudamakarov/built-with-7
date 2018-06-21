@@ -1,5 +1,8 @@
 {
   "name": "built-with-7",
   "private": true,
-  "dependencies": {}
+  "dependencies": {},
+  "devDependencies": {
+    "eslint-config-google": "^0.9.1"
+  }
 }

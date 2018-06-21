@@ -2,7 +2,9 @@
 <% if @top_user %>
     <div>
         Name: <%= @top_user.full_name %>
-        Amount of Accomplishments: <%= @top_user.accopmlishments.count %>
+        <br>
+        Amount of Accomplishments: <%= @top_user.accomplishments.count %>
+        <br>
     </div>
 <% end %>
 

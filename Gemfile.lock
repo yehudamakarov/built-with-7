@@ -96,6 +96,10 @@ GEM
     ffi (1.9.23)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
+    handlebars_assets (0.23.2)
+      execjs (~> 2.0)
+      sprockets (>= 2.0.0)
+      tilt (>= 1.2)
     hashie (3.5.7)
     hirb (0.7.3)
     htmlentities (4.3.4)
@@ -283,6 +287,7 @@ DEPENDENCIES
   chromedriver-helper
   coffee-rails (~> 4.2)
   dotenv-rails
+  handlebars_assets
   hirb
   jbuilder (~> 2.5)
   jquery-rails

@@ -1,5 +1,7 @@
 class DaySerializer < ActiveModel::Serializer
-  attributes :id
-  has_many :accomplishments
-  
+  attributes :id, :accomplishments
+
+  def accomplishments
+    object.accomplishments
+  end
 end

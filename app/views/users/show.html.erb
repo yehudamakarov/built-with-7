@@ -31,7 +31,7 @@
             </div>
 
             <div class="">
-              <%= acc.time_of_accompmlishment %>
+              <%= acc.human_time %>
               |&#9829;|
               <%= link_to 'Details', accomplishment_path(acc) %>
               <% if current_user == @user %>

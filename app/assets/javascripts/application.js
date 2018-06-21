@@ -14,3 +14,5 @@
 //= require jquery
 //= require activestorage
 //= require turbolinks
+//= require handlebars
+//= require_tree ./templates
