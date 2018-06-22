@@ -13,32 +13,48 @@ $(function() {
             const newHTML = toInsert.templateString();
             $('#js-accomplishment-info')
                 .html(newHTML)
-                .addClass("open-up")
+                .addClass('open-up');
         }).error(function(respData) {
-            $('h1').html(respData.responseJSON.title["0"])
-        })
+            $('h1').html(respData.responseJSON.title['0']);
+        });
     });
 
+    /**
+     *
+     *
+     * @class TemplateEntry
+     */
     class TemplateEntry {
+        /**
+         *Creates an instance of TemplateEntry.
+         * @param {*} respData
+         * @memberof TemplateEntry
+         */
         constructor(respData) {
             this.title = respData.data.attributes.title,
             this.effect = respData.data.attributes.effect,
             this.since = respData.data.attributes.since,
-            this.humanTime = respData.data.attributes["human-time"]
+            this.humanTime = respData.data.attributes['human-time'],
             this.days = [
                 ...respData.data.attributes.days.map(function(day) {
                     return {
                         name: day.name,
-                    }
-                })
-            ]
+                    };
+                }),
+            ];
         }
+        /**
+         *
+         *
+         * @return {str}
+         * @memberof TemplateEntry
+         */
         templateString() {
             return HandlebarsTemplates['new_accomplishment_show'](
                 {
                     accomplishment: this,
                 }
-            )
+            );
         }
     }
-})
+});

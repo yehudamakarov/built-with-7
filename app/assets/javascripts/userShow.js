@@ -7,7 +7,7 @@ $(function() {
             const newHTML = toInsert.templateString();
             $(`#js-user-info-${toInsert.userId}`)
                 .html(newHTML)
-                .addClass("open-up");
+                .addClass('open-up');
         });
     });
 
@@ -18,6 +18,11 @@ $(function() {
      * template.
      */
     class TemplateEntry {
+        /**
+         *Creates an instance of TemplateEntry.
+         * @param {*} respData
+         * @memberof TemplateEntry
+         */
         constructor(respData) {
             this.userId = parseInt(respData.data.id);
             this.days = [
@@ -27,22 +32,25 @@ $(function() {
                         dayId: parseInt(obj.id),
                         dayName: obj.attributes.name,
                         accomplishments: [
-                            ...obj.attributes.accomplishments.map(function(accomplishment) {
-                                return {
-                                    id: parseInt(accomplishment.id),
-                                    title: accomplishment.title,
-                                    humanTime: accomplishment['human-time'],
+                            ...obj.attributes.accomplishments.map(
+                                function(accomplishment) {
+                                    return {
+                                        id: parseInt(accomplishment.id),
+                                        title: accomplishment.title,
+                                        humanTime: accomplishment['human-time'],
+                                    };
                                 }
-                            })
+                            ),
                         ],
                     };
-                })
-            ]
+                }),
+            ];
         }
 
         /**
-         * A function that returns a handlebars template ready to be inserted to the DOM.
-         * @returns {string}
+         * A function that returns a handlebars template ready to be inserted to
+         * the DOM.
+         * @return {string}
          * @memberof TemplateEntry
          */
         templateString() {
@@ -50,7 +58,7 @@ $(function() {
                 {
                     days: this.days,
                 }
-            )
+            );
         }
     }
 });

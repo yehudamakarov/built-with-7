@@ -1,4 +1,4 @@
-$(function () {
+$(function() {
     $('.js-show').click(function(e) {
         e.preventDefault();
         const JSONPath = `${e.target.pathname}.json`;
@@ -7,9 +7,9 @@ $(function () {
             const newHTML = toInsert.templateString();
             $(`#js-accomplishment-info-${toInsert.accomplishmentId}`)
                 .html(newHTML)
-                .addClass("open-up");
-        })
-    })
+                .addClass('open-up');
+        });
+    });
 
     /**
      * A class that formats response JSON to JSON fit for a Handlebars Template.
@@ -18,14 +18,20 @@ $(function () {
      * template.
      */
     class TemplateEntry {
+        /**
+         *Creates an instance of TemplateEntry.
+         * @param {*} respData
+         * @memberof TemplateEntry
+         */
         constructor(respData) {
             this.accomplishmentId = parseInt(respData.data.id);
             this.since = respData.data.attributes.since;
         }
 
         /**
-         * A function that returns a handlebars template ready to be inserted to the DOM.
-         * @returns {string}
+         * A function that returns a handlebars template ready to be inserted to
+         * the DOM.
+         * @return {string}
          * @memberof TemplateEntry
          */
         templateString() {
@@ -33,7 +39,7 @@ $(function () {
                 {
                     accomplishment: this,
                 }
-            )
+            );
         }
     }
-})
+});
