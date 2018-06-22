@@ -1,8 +1,8 @@
-$(function() {
-    $('.js-show').click(function getUserInfo(e) {
+$(() => {
+    $('.js-show').click((e) => {
         e.preventDefault();
         const JSONPath = `${e.target.pathname}.json`;
-        $.getJSON(JSONPath, function(respData) {
+        $.getJSON(JSONPath, (respData) => {
             const toInsert = new TemplateEntry(respData);
             const newHTML = toInsert.templateString();
             $(`#js-user-info-${toInsert.userId}`)
@@ -26,14 +26,14 @@ $(function() {
         constructor(respData) {
             this.userId = parseInt(respData.data.id);
             this.days = [
-                ...respData.included.map(function(obj) {
+                ...respData.included.map((obj) => {
                     return {
                         userId: parseInt(respData.data.id),
                         dayId: parseInt(obj.id),
                         dayName: obj.attributes.name,
                         accomplishments: [
                             ...obj.attributes.accomplishments.map(
-                                function(accomplishment) {
+                                (accomplishment) => {
                                     return {
                                         id: parseInt(accomplishment.id),
                                         title: accomplishment.title,

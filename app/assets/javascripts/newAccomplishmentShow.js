@@ -1,9 +1,9 @@
-$(function() {
-    $('form').submit(function(e) {
+$(() => {
+    $('form').submit((e) => {
         e.preventDefault();
-        const values = $(this).serialize();
+        const values = $(e.target).serialize();
         const postResp = $.post('/accomplishments', values);
-        postResp.done(function(respData) {
+        postResp.done((respData) => {
             // so this is always going to run and the IF/ELSE in the controller
             // is deciding what to send back to this request.
 
@@ -14,7 +14,7 @@ $(function() {
             $('#js-accomplishment-info')
                 .html(newHTML)
                 .addClass('open-up');
-        }).error(function(respData) {
+        }).error((respData) => {
             $('h1').html(respData.responseJSON.title['0']);
         });
     });
@@ -36,7 +36,7 @@ $(function() {
             this.since = respData.data.attributes.since,
             this.humanTime = respData.data.attributes['human-time'],
             this.days = [
-                ...respData.data.attributes.days.map(function(day) {
+                ...respData.data.attributes.days.map((day) => {
                     return {
                         name: day.name,
                     };

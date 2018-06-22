@@ -1,8 +1,8 @@
-$(function() {
-    $('.js-show').click(function(e) {
+$(() => {
+    $('.js-show').click((e) => {
         e.preventDefault();
         const JSONPath = `${e.target.pathname}.json`;
-        $.getJSON(JSONPath, function(respData) {
+        $.getJSON(JSONPath, (respData) =>{
             const toInsert = new TemplateEntry(respData);
             const newHTML = toInsert.templateString();
             $(`#js-accomplishment-info-${toInsert.accomplishmentId}`)
