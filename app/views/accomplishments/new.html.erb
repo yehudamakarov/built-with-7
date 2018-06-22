@@ -1,4 +1,7 @@
 <h1>Add an Accomplishment</h1>
+<div id="js-accomplishment-info">
+
+</div>
 
 <%= form_for @accomplishment do |f| %>
 
@@ -39,7 +42,7 @@
     </div>
   <% end %>
   <br>
-  <%= f.submit "Accomplished!" %>
-
-
+  <%= f.submit "Accomplished!", { id: "pressAgain" } %>
 <% end %>
+
+<%= javascript_include_tag "newAccomplishmentShow" %>

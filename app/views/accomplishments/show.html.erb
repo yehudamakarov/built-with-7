@@ -23,10 +23,14 @@
   </div>
 </div>
 <div class="list-style">
-  <div>
-    <%= link_to 'Edit', edit_accomplishment_path(@accomplishment) %>
-  </div>
-  <div>
-    <%= link_to 'Remove', accomplishment_path(@accomplishment), method: :delete %>
-  </div>
+  <% if current_user == @accomplishment.user %>
+    <div>
+      <%= link_to 'Edit', edit_accomplishment_path(@accomplishment) %>
+    </div>
+    <div>
+      <%= link_to 'Remove', accomplishment_path(@accomplishment), method: :delete %>
+    </div>
+  <% end %>
 </div>
+
+

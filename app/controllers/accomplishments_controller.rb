@@ -25,10 +25,13 @@ class AccomplishmentsController < ApplicationController
   def create
     @user = current_user
     @accomplishment = Accomplishment.new_from_params(accomplishment_params, @user)
-    if @accomplishment.save
-      redirect_to accomplishment_path(@accomplishment)
-    else
-      render :new
+    
+    respond_to do |format|
+      if @accomplishment.save
+        format.json { render json: @accomplishment, include: ['days'], status: 201 }
+      else
+        format.json { render json: @accomplishment.errors, status: :unprocessable_entity }
+      end
     end
   end
 

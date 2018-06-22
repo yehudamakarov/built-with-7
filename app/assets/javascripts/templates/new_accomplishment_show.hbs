@@ -1,0 +1,24 @@
+<div class="list-style">
+  <div>
+    {{accomplishment.title}}
+  </div>
+  <div>
+    {{accomplishment.humanTime}}
+  </div>
+</div>
+<div class="effect">
+  {{accomplishment.effect}}
+</div>
+<div class="doing-on">
+  {{#accomplishment.days}}
+    |{{this.name}}|
+  {{/accomplishment.days}}
+</div>
+<div class="list-style">
+  <div>
+    Since:
+  </div>
+  <div>
+    {{accomplishment.since}}
+  </div>
+</div>
