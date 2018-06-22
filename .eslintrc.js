@@ -4,7 +4,7 @@ module.exports = {
         "ecmaVersion": 6
     },
     "rules": {
-        "prefer-arrow-callback": "error"
+        "prefer-arrow-callback": ["error"]
     }
 
 
