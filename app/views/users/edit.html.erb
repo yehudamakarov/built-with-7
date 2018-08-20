@@ -1,5 +1,4 @@
 <h1>Edit Profile</h1>
-
 <%= form_for @user do |f| %>
   First Name:
   <br>
@@ -14,5 +13,10 @@
   <%= f.email_field :email %>
   <br>
   <%= f.submit 'Update!' %>
-
 <% end %>
+
+<div>
+  Or,
+</div>
+
+<%= link_to 'Delete Profile', user_path(@user), method: :delete %>

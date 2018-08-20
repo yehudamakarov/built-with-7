@@ -24,9 +24,16 @@ $(() => {
          * @memberof TemplateEntry
          */
         constructor(respData) {
+            const sortedDays = respData.included.sort((dayObj, nextDayObj) => {
+              if (dayObj.attributes.name > nextDayObj.attributes.name) {
+                  return 1;
+              } else {
+                  return -1
+              }
+            });
             this.userId = parseInt(respData.data.id);
             this.days = [
-                ...respData.included.map((obj) => {
+                ...sortedDays.map((obj) => {
                     return {
                         userId: parseInt(respData.data.id),
                         dayId: parseInt(obj.id),

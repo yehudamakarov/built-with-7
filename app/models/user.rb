@@ -68,5 +68,4 @@ class User < ApplicationRecord
   def self.with_bussiest_week(amount = 5)
     self.joins(:day_accomplishments).group(:id).order(Arel.sql('count(day_accomplishments.id) desc')).limit(amount)
   end
-
 end

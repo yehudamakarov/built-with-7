@@ -46,7 +46,10 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user.destory
+    @user.identities.each do |i|
+      i.destroy
+    end
+    @user.destroy
     flash[:deleted] = 'You have successfully deleted your account'
     session.clear
     redirect_to root_path
