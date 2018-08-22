@@ -14,7 +14,6 @@
   <br>
 <% else %>
 
-<!-- Proper show logic for the viewing of a single day -->
   <% @day.accomplishments_by_time.each do |acc| %>
     <div class="list-style">
       <div><%= link_to acc.title, acc %></div>

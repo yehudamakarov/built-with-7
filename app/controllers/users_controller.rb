@@ -24,7 +24,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    flash[:showing] = "Individual User"
+    flash[:showing] = ""
     @user = User.includes(days: :accomplishments).find(params[:id])
     respond_to do |format|
       format.html { render :show }
